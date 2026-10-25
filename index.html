@@ -597,4 +597,117 @@ var CONSTRUCCION = {
   setInterval(pedir, 20000);
 })();
 </script>
+  <!-- ═══════════════════════════════════════════════════════════
+     BOTÓN FLOTANTE "ADMIN" — arriba-izquierda del banner
+     Todo el diseño viene incluido aquí.
+     ═══════════════════════════════════════════════════════════ -->
+<a id="fabAdmin" href="#" aria-label="Panel de administración" title="Administración">
+  <span class="fabAdminIcono" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+      <path d="M8 11V8a4 4 0 0 1 8 0v3"></path>
+      <circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"></circle>
+    </svg>
+  </span>
+  <span class="fabAdminTexto">Admin</span>
+</a>
+
+<script>
+(function () {
+  /* ─────────────── 1) INYECTA EL DISEÑO (CSS) ─────────────── */
+  var css = `
+    #fabAdmin {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9998;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      height: 44px;
+      min-width: 44px;
+      padding: 0 16px 0 13px;
+
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(10, 14, 23, .72);
+      color: #fff;
+
+      text-decoration: none;
+      font: 700 14px/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: .2px;
+
+      box-shadow: 0 4px 18px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+              backdrop-filter: blur(10px) saturate(140%);
+
+      opacity: .85;
+      transition: opacity .2s ease, transform .2s ease,
+                  box-shadow .2s ease, background .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #fabAdmin:hover,
+    #fabAdmin:focus-visible {
+      opacity: 1;
+      transform: translateY(-2px);
+      background: rgba(123, 47, 247, .85);
+      border-color: rgba(180, 140, 255, .55);
+      box-shadow: 0 8px 22px rgba(123, 47, 247, .55);
+      outline: none;
+    }
+
+    #fabAdmin:active {
+      transform: scale(.95);
+    }
+
+    #fabAdmin .fabAdminIcono {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      color: #B48CFF;
+      display: inline-flex;
+    }
+
+    #fabAdmin .fabAdminIcono svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #fabAdmin .fabAdminTexto {
+      white-space: nowrap;
+    }
+
+    /* Móvil: se vuelve circular sin texto */
+    @media (max-width: 520px) {
+      #fabAdmin {
+        width: 44px;
+        padding: 0;
+        justify-content: center;
+      }
+      #fabAdmin .fabAdminTexto { display: none; }
+    }
+
+    /* Al imprimir: ocúltalo */
+    @media print {
+      #fabAdmin { display: none !important; }
+    }
+  `;
+
+  var style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  /* ─────────────── 2) ASIGNA EL DESTINO (href) ─────────────── */
+  var URL_ADMIN =
+    'https://script.google.com/macros/s/AKfycbzrFBrPRMg_aAMe-VijThR09R3kOiyh_Mt6o1oovscXz64fQebKbGfn0X9_NyPOm7_vJA/exec' +
+    '?negocio=neg-0008&pagina=admin';
+
+  document.getElementById('fabAdmin').setAttribute('href', URL_ADMIN);
+})();
+</script>
 </body></html>
